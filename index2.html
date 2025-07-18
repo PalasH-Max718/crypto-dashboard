@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Dashboard - Multi Panel</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #1f1f1f;
+            padding: 10px;
+            text-align: center;
+        }
+        .search-container {
+            text-align: center;
+            margin: 20px;
+        }
+        input[type='text'] {
+            padding: 10px;
+            width: 50%;
+            max-width: 400px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        iframe {
+            width: 100%;
+            height: 40vh;
+            border: none;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Crypto Dashboard - Multi Panel</h1>
+    </header>
+
+    <div class="search-container">
+        <div>
+            <input type="text" id="urlInput1" placeholder="Enter URL for Panel 1">
+            <button onclick="loadURL(1)">Load Panel 1</button>
+        </div>
+        <div>
+            <input type="text" id="urlInput2" placeholder="Enter URL for Panel 2">
+            <button onclick="loadURL(2)">Load Panel 2</button>
+        </div>
+        <div>
+            <input type="text" id="urlInput3" placeholder="Enter URL for Panel 3">
+            <button onclick="loadURL(3)">Load Panel 3</button>
+        </div>
+    </div>
+
+    <iframe id="displayFrame1" src="https://legend.coinglass.com/"></iframe>
+    <iframe id="displayFrame2" src="https://web.bookmap.com/"></iframe>
+    <iframe id="displayFrame3" src="https://coinglass.com/"></iframe>
+
+    <script>
+        function loadURL(panel) {
+            const urlInput = document.getElementById(`urlInput${panel}`).value;
+            if (urlInput) {
+                document.getElementById(`displayFrame${panel}`).src = urlInput.startsWith('http') ? urlInput : 'https://' + urlInput;
+            }
+        }
+    </script>
+</body>
+</html>
